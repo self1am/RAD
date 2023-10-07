@@ -50,7 +50,7 @@ The Library Management System is a Java console application designed to help lib
 
 The UML Class Diagram for the Library Management System can be found in the project's documentation.
 
-[Link to Class Diagram](link-to-class-diagram)
+[Link to Class Diagram](https://drive.google.com/file/d/1XewYyUxEVavOZ4ej45Dn3OR_hdNEULYD/view?usp=sharing)
 
 # Contributing
 
