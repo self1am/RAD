@@ -124,16 +124,53 @@ public class Library {
         }
     }
 
-    public List<Lending> viewLendingInformation() {
-        return lendingInfoList;
-    }
-
     public List<Overdue> displayOverdueBooks() {
+        // Clear the previous list of overdue books
+        overdueBooks.clear();
+    
+        // Get the current date
+        Date currentDate = new Date();
+    
+        // Iterate through lending information to find overdue books
+        for (Lending lendingInfo : lendingInfoList) {
+            if (lendingInfo.getReturnDate().before(currentDate)) {
+                // Calculate the number of days overdue
+                long diffInMillis = currentDate.getTime() - lendingInfo.getReturnDate().getTime();
+                int daysOverdue = (int) (diffInMillis / (24 * 60 * 60 * 1000)); // Convert milliseconds to days
+    
+                // Create an overdue book entry
+                Overdue overdueBook = new Overdue(
+                        lendingInfo.getBook(),
+                        lendingInfo.getMember(),
+                        lendingInfo.getReturnDate(),
+                        daysOverdue
+                );
+    
+                // Add the overdue book to the list
+                overdueBooks.add(overdueBook);
+            }
+        }
+    
+        // Display the list of overdue books
+        if (overdueBooks.isEmpty()) {
+            System.out.println("No books are currently overdue.");
+        } else {
+            System.out.println("Overdue Books:");
+            for (Overdue overdueBook : overdueBooks) {
+                System.out.println("Book Title: " + overdueBook.getBook().getTitle());
+                System.out.println("Member Name: " + overdueBook.getMember().getName());
+                System.out.println("Due Date: " + overdueBook.getDueDate());
+                System.out.println("Days Overdue: " + overdueBook.getDaysOverdue());
+                System.out.println();
+            }
+        }
+    
         return overdueBooks;
     }
+    
 
-    public void calculateFine(Lending lendingInfo) {
-        // Implement fine calculation logic here
+    public List<Lending> viewLendingInformation() {
+        return lendingInfoList;
     }
 
 }

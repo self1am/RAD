@@ -37,11 +37,11 @@ public class RAD {
             System.out.println("13. Quit");
 
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
+            String choice = scanner.next();
             scanner.nextLine(); // Consume the newline
 
             switch (choice) {
-                case 1:
+                case "1":
                     // Add Book
                     System.out.print("Enter Book ID: ");
                     int bookId = scanner.nextInt();
@@ -57,7 +57,7 @@ public class RAD {
                     librarySystem.addBook(book);
                     break;
 
-                case 2:
+                case "2":
                     // Remove Book
                     System.out.print("Enter Title of Book to Remove: ");
                     String bookTitleToRemove = scanner.nextLine();
@@ -70,7 +70,7 @@ public class RAD {
                     }
                     break;
 
-                case 3:
+                case "3":
                     // Register Member
                     System.out.print("Enter Member ID: ");
                     int memberId = scanner.nextInt();
@@ -81,7 +81,7 @@ public class RAD {
                     librarySystem.registerMember(member);
                     break;
 
-                case 4:
+                case "4":
                     // Remove Member
                     System.out.print("Enter Member ID to Remove: ");
                     int memberToRemoveId = scanner.nextInt();
@@ -95,7 +95,7 @@ public class RAD {
                     }
                     break;
 
-                case 5:
+                case "5":
                     // Search Book Information
                     System.out.print("Enter Title to Search: ");
                     String searchTitle = scanner.nextLine();
@@ -110,7 +110,7 @@ public class RAD {
                     }
                     break;
 
-                case 6:
+                case "6":
                     // Search Member Information
                     System.out.print("Enter Member ID to Search: ");
                     int searchMemberId = scanner.nextInt();
@@ -119,35 +119,49 @@ public class RAD {
                     if (searchedMember != null) {
                         System.out.println("Member Found:");
                         System.out.println("Name: " + searchedMember.getName());
-                        // You can display more member information here if needed
                     } else {
                         System.out.println("Member not found.");
                     }
                     break;
 
-                case 7:
+                case "7":
                     // Display Book Names
                     System.out.println("Book Names:");
                     librarySystem.displayBookNames();
                     break;
 
-                case 8:
+                case "8":
                     // Display Member Names
                     System.out.println("Member Names:");
                     librarySystem.displayMemberNames();
                     break;
 
-                case 9:
+                case "9":
                     // Lend Book
-                    // Implement this functionality
+                    System.out.print("Enter the Book Title: ");
+                    String searchBookTitle = scanner.nextLine();
+                    Book selBook = librarySystem.searchBookInformation(searchBookTitle);
+                    System.out.print("Enter the Member ID: ");
+                    int searchMemID = scanner.nextInt();
+                    Member selMember = librarySystem.searchMemberInformation(searchMemID);
+
+                    librarySystem.lendBook(selBook, selMember);
+
                     break;
 
-                case 10:
+                case "10":
                     // Return Book
-                    // Implement this functionality
+                    System.out.print("Enter the Book Title: ");
+                    String searchBookTitle = scanner.nextLine();
+                    Book selBook = librarySystem.searchBookInformation(searchBookTitle);
+                    System.out.print("Enter the Member ID: ");
+                    int searchMemID = scanner.nextInt();
+                    Member selMember = librarySystem.searchMemberInformation(searchMemID);
+
+                    librarySystem.returnBook(selBook, selMember);
                     break;
 
-                case 11:
+                case "11":
                     // View Lending Information
                     List<Lending> lendingInfoList = librarySystem.viewLendingInformation();
                     System.out.println("Lending Information:");
@@ -161,12 +175,12 @@ public class RAD {
                     }
                     break;
 
-                case 12:
+                case "12":
                     // Display Overdue Books
-                    // Implement this functionality
+                    librarySystem.displayOverdueBooks();
                     break;
 
-                case 13:
+                case "13":
                     // Quit the program
                     System.out.println("Exiting Library Management System. Goodbye!");
                     System.exit(0);

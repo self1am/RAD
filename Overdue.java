@@ -13,4 +13,37 @@ public class Overdue {
         this.daysOverdue = daysOverdue;
     }
 
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public int getDaysOverdue() {
+        return daysOverdue;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setDaysOverdue(int daysOverdue) {
+        this.daysOverdue = daysOverdue;
+    }
+
+    
 }
