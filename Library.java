@@ -41,6 +41,8 @@ public class Library {
         return null; // Book not found
     }
 
+
+
     public Member searchMemberInformation(int memberId) {
         for (Member member : members) {
             if (member.getMemberId() == memberId) {
@@ -52,13 +54,19 @@ public class Library {
 
     public void displayBookNames() {
         for (Book book : books) {
-            System.out.println(book.getTitle());
+            
+            System.out.println("\t"+book.getId());
+            System.out.println("\t"+book.getTitle());
+            System.out.println("\t"+book.getAuthor());
+            System.out.println("\t------------");
         }
     }
 
     public void displayMemberNames() {
         for (Member member : members) {
-            System.out.println(member.getName());
+            System.out.println("\t"+member.getName());
+            System.out.println("\t"+member.getMemberId);
+            System.out.println("\t------------");
         }
     }
 

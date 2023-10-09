@@ -5,6 +5,7 @@ public class Book {
     private String author;
     private int copiesAvailable;
 
+    //constructors
     public Book(int id, String title, String author, int copiesAvailable) {
         this.id = id;
         this.title = title;
@@ -12,6 +13,7 @@ public class Book {
         this.copiesAvailable = copiesAvailable;
     }
 
+    //getters and setters
     public int getId() {
         return id;
     }
